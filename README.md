@@ -48,4 +48,6 @@ To use the backend(for handling PDF creation):
 - Express.js ( For server-side handling )
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## License
+
+This project is licensed under the [MIT License](./LICENSE) - see the LICENSE file for details.
