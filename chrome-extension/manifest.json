@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Text to PDF Converter",
+    "version": "1.0",
+    "description": "Convert selected text or webpage content into a downloadable PDF.",
+    "background": {
+      "service_worker": "background.js"
+    },
+    "permissions": [
+      "scripting",
+      "activeTab",
+      "tabs",
+      "contextMenus"
+    ],
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  

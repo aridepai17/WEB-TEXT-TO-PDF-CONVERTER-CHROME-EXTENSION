@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available PDFs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h2 {
+      font-size: 24px;
+    }
+    .pdf-item {
+      margin: 10px 0;
+    }
+    .pdf-item a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    .pdf-item a:hover {
+      text-decoration: underline;
+    }
+    .pdf-details {
+      font-size: 14px;
+      color: #555;
+    }
+    .delete-btn {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .delete-btn:hover {
+      background-color: #ff1a1a;
+    }
+  </style>
+</head>
+<body>
+  <h2>Available PDFs</h2>
+  <ul>
+    <% files.forEach(function(file) { %>
+      <li class="pdf-item">
+        <a href="/pdfs/<%= file.name %>" target="_blank"><%= file.name %></a>
+        <div class="pdf-details">
+          📅 <%= file.date %> | 📦 <%= file.size %> KB
+        </div>
+        <!-- Delete Button -->
+        <button class="delete-btn" onclick="deletePDF('<%= file.name %>')">Delete</button>
+      </li>
+    <% }); %>
+  </ul>
+
+  <script>
+    function deletePDF(filename) {
+      if (confirm("Are you sure you want to delete this PDF?")) {
+        fetch(`/delete-pdf/${filename}`, { method: 'DELETE' })
+          .then(response => response.json())
+          .then(data => {
+            alert(data.message);
+            window.location.reload(); // Reload the page to reflect the changes
+          })
+          .catch(err => {
+            alert("Error deleting PDF: " + err);
+          });
+      }
+    }
+  </script>
+</body>
+</html>
