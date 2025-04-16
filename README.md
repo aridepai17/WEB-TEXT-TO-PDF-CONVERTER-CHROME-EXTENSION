@@ -50,4 +50,4 @@ To use the backend(for handling PDF creation):
 ## License
 ## License
 
-This project is licensed under the [MIT License](./LICENSE) - see the LICENSE file for details.
+This project is licensed under the [MIT License](./LICENSE.txt) - see the LICENSE file for details.
